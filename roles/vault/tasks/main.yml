@@ -1,0 +1,11 @@
+- name : Download Repo File
+  ansible.builtin.get_url:
+    url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    dest: /etc/yum.repos.d/hashicorp.repo
+
+- name: Install Vault
+  ansible.builtin.dnf:
+    name: vault
+    state: installed
+
+
