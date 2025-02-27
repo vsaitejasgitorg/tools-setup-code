@@ -1,3 +1,6 @@
+- name: Setup prompt
+  ansible.builtin.shell: set-prompt {{ tool_name }}
+
 - name : Download Repo File
   ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
