@@ -4,6 +4,12 @@ terraform {
     key    = "vault-secrets/state"
     region = "us-east-1"
   }
+  required_providers {
+    vault = {
+      source  = "hashicorp/vault"
+      version = "4.5.0"
+    }
+  }
 }
 
 
@@ -32,5 +38,20 @@ resource "vault_generic_secret" "ssh" {
 EOT
 }
 
+resource "vault_mount" "roboshop-dev" {
+  path = "robodhop-dev"
+  type = "kv"
+  options = {version =  "2" }
+  description = "Roboshop Dev Secrets"
+}
 
+resource "vault_generic_secret" "roboshop-dev-cart" {
+  path      = "${vault_mount.roboshop-dev.path}/cart"
 
+  data_json = <<EOT
+{
+ "username":   "ec2-user",
+  "password": "DevOps321"
+}
+EOT
+}
