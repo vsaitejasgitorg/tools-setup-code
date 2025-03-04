@@ -39,7 +39,7 @@ EOT
 }
 
 resource "vault_mount" "roboshop-dev" {
-  path = "robodhop-dev"
+  path = "roboshop-dev"
   type = "kv"
   options = {version =  "2" }
   description = "Roboshop Dev Secrets"
