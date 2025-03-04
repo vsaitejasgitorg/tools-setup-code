@@ -85,4 +85,18 @@ resource "vault_generic_secret" "roboshop-dev-dispatch" {
 EOT
 }
 
+# Frontned Secrets
+resource "vault_generic_secret" "roboshop-dev-frontend" {
+  path = "${vault_mount.roboshop-dev.path}/frontend"
+
+  data_json = <<EOT
+{
+"catalogue" :   "http://catalogue-dev.saitejasroboshop.store:8080/",
+"user"      :   "http://user-dev.saitejasroboshop.store:8080/",
+"cart"      :   "http://cart-dev.saitejasroboshop.store:8080/",
+"shipping"  :   "http://shipping-dev.saitejasroboshop.store:8080/",
+"payment"   :   "http://payment-dev.saitejasroboshop.store:8080/"
+}
+EOT
+}
 
