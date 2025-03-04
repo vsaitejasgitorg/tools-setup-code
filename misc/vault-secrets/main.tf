@@ -45,6 +45,7 @@ resource "vault_mount" "roboshop-dev" {
   description = "Roboshop Dev Secrets"
 }
 
+# Cart Secrets
 resource "vault_generic_secret" "roboshop-dev-cart" {
   path      = "${vault_mount.roboshop-dev.path}/cart"
 
@@ -57,6 +58,8 @@ resource "vault_generic_secret" "roboshop-dev-cart" {
 EOT
 }
 
+#Catalogue Secrets
+
 resource "vault_generic_secret" "roboshop-dev-catalogue" {
   path      = "${vault_mount.roboshop-dev.path}/catalogue"
 
@@ -68,7 +71,7 @@ resource "vault_generic_secret" "roboshop-dev-catalogue" {
 EOT
 }
 
-
+#Dispatch Secrets
 
 resource "vault_generic_secret" "roboshop-dev-dispatch" {
   path      = "${vault_mount.roboshop-dev.path}/dispatch"
@@ -81,4 +84,5 @@ resource "vault_generic_secret" "roboshop-dev-dispatch" {
 }
 EOT
 }
+
 
