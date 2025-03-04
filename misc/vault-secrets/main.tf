@@ -50,8 +50,9 @@ resource "vault_generic_secret" "roboshop-dev-cart" {
 
   data_json = <<EOT
 {
- "username":   "ec2-user",
-  "password": "DevOps321"
+ "REDIS_HOST"    : "redis-dev.saitejasroboshop.store",
+ "CATALOGUE_HOST": "catalogue-dev.saitejasroboshop.store",
+ "CATALOGUE_PORT": "8080"
 }
 EOT
 }
