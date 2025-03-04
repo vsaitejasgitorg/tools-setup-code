@@ -120,3 +120,14 @@ resource "vault_generic_secret" "roboshop-dev-payment" {
 EOT
 }
 
+resource "vault_generic_secret" "roboshop-dev-shipping" {
+  path = "${vault_mount.roboshop-dev.path}/shipping"
+
+  data_json = <<EOT
+{
+"CART_ENDPOINT" : "saitejasroboshop.store:8080",
+"DB_HOST" : "mysql-dev.saitejasroboshop.store"
+}
+EOT
+}
+
