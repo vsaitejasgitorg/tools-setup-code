@@ -140,8 +140,8 @@ resource "vault_generic_secret" "roboshop-dev-user" {
   data_json = <<EOT
 {
 "MONGO" : "true",
-"REDIS_URL" : "redis://redis-dev.rdevopsb83.online:6379",
-"MONGO_URL" : "mongodb://mongodb-dev.rdevopsb83.online:27017/users"
+"REDIS_URL" : "redis://redis-dev.saitejasroboshop.store:6379",
+"MONGO_URL" : "mongodb://mongodb-dev.saitejasroboshop.store:27017/users"
 }
 EOT
 }
