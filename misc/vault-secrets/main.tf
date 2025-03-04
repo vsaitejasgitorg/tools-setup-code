@@ -120,6 +120,7 @@ resource "vault_generic_secret" "roboshop-dev-payment" {
 EOT
 }
 
+# Shipping Secrets
 resource "vault_generic_secret" "roboshop-dev-shipping" {
   path = "${vault_mount.roboshop-dev.path}/shipping"
 
@@ -131,3 +132,16 @@ resource "vault_generic_secret" "roboshop-dev-shipping" {
 EOT
 }
 
+# User Secrets
+
+resource "vault_generic_secret" "roboshop-dev-user" {
+  path = "${vault_mount.roboshop-dev.path}/user"
+
+  data_json = <<EOT
+{
+"MONGO" : "true",
+"REDIS_URL" : "redis://redis-dev.rdevopsb83.online:6379",
+"MONGO_URL" : "mongodb://mongodb-dev.rdevopsb83.online:27017/users"
+}
+EOT
+}
