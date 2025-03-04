@@ -104,19 +104,19 @@ EOT
 
 # Payment Secrets
 
-resource "vault_generic_secret" "roboshop-dev-payment" {
-  path : "${vault_mount.roboshop-dev.path}/payment"
-
-  data_json : <<EOT
-{
-"CART_HOST" : "cart-dev.saitejasroboshop.store",
-"CART_PORT" : "8080",
-"USER_HOST" : "user-dev.saitejasroboshop.store",
-"USER_PORT" : "8080",
-"AMQP_HOST" : "rabbitmq-dev.saitejasroboshop.store",
-"AMQP_USER" : "roboshop",
-"AMQP_PASS" : "roboshop123"
-}
-EOT
-}
-
+# resource "vault_generic_secret" "roboshop-dev-payment" {
+#   path : "${vault_mount.roboshop-dev.path}/payment"
+#
+#   data_json : <<EOT
+# {
+# "CART_HOST" : "cart-dev.saitejasroboshop.store",
+# "CART_PORT" : "8080",
+# "USER_HOST" : "user-dev.saitejasroboshop.store",
+# "USER_PORT" : "8080",
+# "AMQP_HOST" : "rabbitmq-dev.saitejasroboshop.store",
+# "AMQP_USER" : "roboshop",
+# "AMQP_PASS" : "roboshop123"
+# }
+# EOT
+# }
+#
