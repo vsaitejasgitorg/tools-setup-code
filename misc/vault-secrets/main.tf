@@ -126,7 +126,7 @@ resource "vault_generic_secret" "roboshop-dev-shipping" {
 
   data_json = <<EOT
 {
-"CART_ENDPOINT" : "saitejasroboshop.store:8080",
+"CART_ENDPOINT" : "cart-dev.saitejasroboshop.store:8080",
 "DB_HOST" : "mysql-dev.saitejasroboshop.store"
 }
 EOT
