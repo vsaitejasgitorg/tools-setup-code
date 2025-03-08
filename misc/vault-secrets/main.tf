@@ -87,7 +87,7 @@ EOT
 
 
 
-# Frontned Secrets
+# Frontend Secrets
 resource "vault_generic_secret" "roboshop-dev-frontend" {
   path = "${vault_mount.roboshop-dev.path}/frontend"
 
@@ -97,7 +97,18 @@ resource "vault_generic_secret" "roboshop-dev-frontend" {
 "user"      :   "http://user-dev.saitejasroboshop.store:8080/",
 "cart"      :   "http://cart-dev.saitejasroboshop.store:8080/",
 "shipping"  :   "http://shipping-dev.saitejasroboshop.store:8080/",
-"payment"   :   "http://payment-dev.saitejasroboshop.store:8080/"
+"payment"   :   "http://payment-dev.saitejasroboshop.store:8080/",
+"CATALOGUE_HOST"  : "catalogue-dev.saitejasroboshop.store",
+"CATALOGUE_PORT"  : "8080,
+"USER_HOST"     : "user-dev.saitejasroboshop.store",
+"USER_PORT"     : "8080",
+"CART_HOST"     :  "cart-dev.saitejasroboshop.store",
+"CART_PORT"     : "8080",
+"SHIPPING_HOST" : "shipping-dev.saitejasroboshop.store",
+"SHIPPING_PORT" :  "8080",
+"PAYMENT_HOST"  : "payment-dev.saitejasroboshop.store",
+"PAYMENT_PORT"  : "8080"
+
 }
 EOT
 }
