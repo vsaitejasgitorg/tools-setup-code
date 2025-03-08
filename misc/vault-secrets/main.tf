@@ -99,7 +99,7 @@ resource "vault_generic_secret" "roboshop-dev-frontend" {
 "shipping"  :   "http://shipping-dev.saitejasroboshop.store:8080/",
 "payment"   :   "http://payment-dev.saitejasroboshop.store:8080/",
 "CATALOGUE_HOST"  : "catalogue-dev.saitejasroboshop.store",
-"CATALOGUE_PORT"  : "8080,
+"CATALOGUE_PORT"  : "8080",
 "USER_HOST"     : "user-dev.saitejasroboshop.store",
 "USER_PORT"     : "8080",
 "CART_HOST"     :  "cart-dev.saitejasroboshop.store",
