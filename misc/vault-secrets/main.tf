@@ -66,7 +66,11 @@ resource "vault_generic_secret" "roboshop-dev-catalogue" {
   data_json = <<EOT
 {
  "MONGO" : "true",
- "MONGO_URL" : "mongodb://mongodb-dev.saitejasroboshop.store:27017/catalogue"
+ "MONGO_URL" : "mongodb://mongodb-dev.saitejasroboshop.store:27017/catalogue",
+ "DB_TYPE": "mongo",
+ "APP_GIT_URL" : "https://github.com/roboshop-devops-project-v3/catalogue",
+ "DB_HOST" : "mongodb-dev.saitejasroboshop.store",
+ "SCHEMA_FILE" : "db/master-data.js"
 }
 EOT
 }
