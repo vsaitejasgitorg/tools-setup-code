@@ -42,7 +42,7 @@ resource "vault_generic_secret" "github-runner" {
 
   data_json = <<EOT
 {
-
+  "RUNNER_TOKEN":   "xx"
 }
 EOT
 }
