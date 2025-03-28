@@ -20,6 +20,11 @@
     group: github
     remote_src: yes
 
+- name: Install GitHub Runner Dependencies
+  ansible.builtin.shell: ./bin/installdependencies.sh
+  args:
+    chdir: /actions-runner
+  become: true  # Run as root
 
 
 - name: Configure github runner
