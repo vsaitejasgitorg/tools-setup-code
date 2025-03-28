@@ -37,6 +37,15 @@ resource "vault_generic_secret" "ssh" {
 }
 EOT
 }
+resource "vault_generic_secret" "github-runner" {
+  path = "${vault_mount.ssh.path}/github-runner"
+
+  data_json = <<EOT
+{
+
+}
+EOT
+}
 
 resource "vault_mount" "roboshop-dev" {
   path = "roboshop-dev"
