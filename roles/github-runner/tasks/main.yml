@@ -28,8 +28,7 @@
 
 
 - name: Configure github runner
-  ansible.builtin.shell: ./config.sh --url https://github.com/vsaitejasgitorg --token BKRGYYY7JXDBMDWXOPRPPRLH43PVQ
+  ansible.builtin.shell: ./config.sh --url https://github.com/vsaitejasgitorg --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }}
   args:
     chdir:  /actions-runner
   become_user: github
-#{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }}
