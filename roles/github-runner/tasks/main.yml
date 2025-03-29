@@ -66,3 +66,13 @@
   ansible.builtin.dnf:
     name: terraform
     state: installed
+
+- name: Copy Kubernetes repo file
+  ansible.builtin.template:
+    src: kubernetes.repo
+    dest: /etc/yum.repos.d/kubernetes.repo
+
+- name: Install kubectl
+  ansible.builtin.dnf:
+    name: kubectl
+    state: installed
