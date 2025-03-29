@@ -12,13 +12,17 @@
     owner: github
     group: github
 
-- name: Download GitGub Runner
+- name: Download GitHub Runner
   ansible.builtin.unarchive:
     src: https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
     dest: /actions-runner
     owner: github
     group: github
     remote_src: yes
+- name: Install Libicu Dependency Package
+  ansible.builtin.dnf:
+    name: libicu
+    state: installed
 
 - name: Configure GitHub Runner
   ansible.builtin.shell: ./config.sh --url https://github.com/vsaitejasgitorg --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }}
