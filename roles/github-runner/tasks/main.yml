@@ -14,9 +14,6 @@
 
 
 
-- name: debug
-  debug:
-    msg: "{{ runner_stat }}"
 
 - name: Download GitHub Runner
   ansible.builtin.unarchive:
@@ -31,10 +28,15 @@
   ansible.builtin.dnf:
     name: libicu
     state: installed
+
 - name: Check already runner configured status
   ansible.builtin.stat:
     path: /actions-runner/.runner
   register: runner_stat
+
+- name: debug
+  debug:
+    msg: "{{ runner_stat }}"
 
 - name: Configure GitHub Runner
   ansible.builtin.shell: ./config.sh --url https://github.com/vsaitejasgitorg --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }} --unattended
