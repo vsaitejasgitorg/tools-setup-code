@@ -19,7 +19,7 @@
 
 - name: debug
   debug:
-    msg: "{{ runner-stat}}"
+    msg: "{{ runner_stat}}"
 
 - name: Download GitHub Runner
   ansible.builtin.unarchive:
