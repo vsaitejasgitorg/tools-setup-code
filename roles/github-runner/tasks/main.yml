@@ -1,2 +1,21 @@
-- name: Setup prompt
+- name: Setup Prompt
   ansible.builtin.shell: set-prompt {{ tool_name }}
+
+- name: Create GitHub Local User
+  ansible.builtin.user:
+    name: github
+
+- name: Create GitHub Actions Folder
+  ansible.builtin.file:
+    path: /actions-runner
+    state: directory
+    owner: github
+    group: github
+
+- name: Download GitGub Runner
+  ansible.builtin.unarchive:
+    src: https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
+    dest: /actions-runner
+    owner: github
+    group: github
+    remote_src: yes
