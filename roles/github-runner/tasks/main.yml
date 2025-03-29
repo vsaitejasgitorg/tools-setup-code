@@ -28,6 +28,8 @@
     owner: github
     group: github
     remote_src: yes
+  when: not stat.exists
+
 - name: Install Libicu Dependency Package
   ansible.builtin.dnf:
     name: libicu
