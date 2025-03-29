@@ -12,10 +12,7 @@
     owner: github
     group: github
 
-- name: Check already runner configured status
-  ansible.builtin.stat:
-    path: /actions-runner/.runner
-  register: runner_stat
+
 
 - name: debug
   debug:
@@ -28,15 +25,32 @@
     owner: github
     group: github
     remote_src: yes
-  when: not runner_stat.stat.exists
+
 
 - name: Install Libicu Dependency Package
   ansible.builtin.dnf:
     name: libicu
     state: installed
+- name: Check already runner configured status
+  ansible.builtin.stat:
+    path: /actions-runner/.runner
+  register: runner_stat
 
 - name: Configure GitHub Runner
   ansible.builtin.shell: ./config.sh --url https://github.com/vsaitejasgitorg --token {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/data/github-runner:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.saitejasroboshop.store:8200') }} --unattended
   args:
     chdir: /actions-runner
   become_user: github
+  when: not runner_stat.stat.exists
+
+- name: Copy service file
+  ansible.builtin.template:
+   src: github-runner.service
+   dest: /etc/systemd/system/github-runner.service
+
+- name: Start github runner service
+  ansible.builtin.systemd_service:
+    name: github-runner
+    state: started
+    enabled: yes
+    daemon-reload: yes
