@@ -85,3 +85,8 @@
   ansible.builtin.get_url:
     url: https://download.docker.com/linux/rhel/docker-ce.repo
     dest: /etc/yum.repos.d/docker.repo
+
+- name: Install Docker
+  ansible.builtin.dnf:
+    name: docker-ce
+    state: installed
