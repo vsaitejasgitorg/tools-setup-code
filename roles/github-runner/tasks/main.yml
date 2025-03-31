@@ -90,3 +90,9 @@
   ansible.builtin.dnf:
     name: docker-ce
     state: installed
+
+- name: Start Docker
+  ansible.builtin.systemd_service:
+    name: docker
+    state: started
+    enabled: yes
