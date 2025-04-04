@@ -18,4 +18,5 @@ module "tool-infra" {
   port = each.value["port"]
   zone_id = var.zone_id
   iam_policy = each.value["iam_policy"]
+  root_block_device = each.value["root_block_device"]
 }
