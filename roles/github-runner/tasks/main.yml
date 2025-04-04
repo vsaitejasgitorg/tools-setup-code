@@ -107,7 +107,7 @@
 
 - name: Install Nodejs
   ansible.builtin.dnf:
-    name: node
+    name: nodejs
 
 - name: Install Maven
   ansible.builtin.dnf:
