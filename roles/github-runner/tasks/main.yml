@@ -101,3 +101,15 @@
   ansible.builtin.user:
     name: github
     groups: docker
+
+- name: Enable Nodejs dnf module
+  ansible.builtin.shell: dnf module disable nodejs -y ; dnf module enable nodejs:20 -y
+
+- name: Install Nodejs
+  ansible.builtin.dnf:
+    name: node
+
+- name: Install Maven
+  ansible.builtin.dnf:
+    name: maven
+
