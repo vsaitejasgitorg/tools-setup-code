@@ -1,0 +1,32 @@
+- name: Set Prompt
+  ansible.builtin.shell: set-prompt {{ tool_name }}
+
+- name: Copy Elastic repo file
+  ansible.builtin.template:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+
+- name: Install ELK
+  ansible.builtin.dnf:
+    name:
+      - elasticsearch
+      - kibana
+      - logstash
+      - nginx
+    state: installed
+
+- name: Copy nginx config file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Start ELK
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: restarted
+    enabled: yes
+  loop:
+    - elasticsearch
+    - kibana
+    - logstash
+    - nginx
