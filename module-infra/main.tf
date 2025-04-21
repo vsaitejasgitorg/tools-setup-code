@@ -17,12 +17,13 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "app_port" {
+  for_each          = var.ports
   ip_protocol       = "tcp"
   security_group_id = aws_security_group.tool.id
   cidr_ipv4 = "0.0.0.0/0"
-  from_port = var.port
-  to_port = var.port
-  description = var.name
+  from_port = each.value
+  to_port = each.value
+  description = each.key
 }
 
 resource "aws_vpc_security_group_egress_rule" "egress_allow_all" {

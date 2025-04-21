@@ -15,7 +15,7 @@ module "tool-infra" {
   ami_id = var.ami_id
   instance_type = each.value["instance_type"]
   name = each.key
-  port = each.value["port"]
+  ports = each.value["ports"]
   zone_id = var.zone_id
   iam_policy = each.value["iam_policy"]
   root_block_device = each.value["root_block_device"]
