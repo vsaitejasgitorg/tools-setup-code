@@ -1,6 +1,11 @@
 - name: Set Prompt
   ansible.builtin.shell: set-prompt {{ tool_name }}
 
+- name: LVM Layout
+  ansible.builtin.include_role:
+      name: common
+      tasks_from: lvm
+
 - name: Copy Elastic repo file
   ansible.builtin.template:
     src: elastic.repo
