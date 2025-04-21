@@ -28,5 +28,19 @@ variable "tools" {
         Resource    = []
       }
     }
+
+    elk-stack = {
+      instance_type     = "i3.large"
+      ports             = {
+        elasticsearch = 9200
+        kibana        = 80
+      }
+      root_block_device = 20
+      iam_policy = {
+        Action   = ["*"]
+        Resource = []
+      }
+    }
+
   }
 }
