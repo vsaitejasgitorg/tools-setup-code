@@ -35,7 +35,7 @@ variable "tools" {
         elasticsearch = 9200
         kibana        = 80
       }
-      root_block_device = 20
+      root_block_device = 30
       iam_policy = {
         Action   = ["*"]
         Resource = []
