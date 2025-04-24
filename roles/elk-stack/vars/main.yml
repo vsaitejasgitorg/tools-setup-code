@@ -8,3 +8,4 @@ lv_input:
   - { lv: varVol,     size: 11 }
 
 disk_name: xvda
+logstash_username:
