@@ -32,7 +32,7 @@ variable "tools" {
     elk-stack = {
       instance_type     = "i3.large"
       ports             = {
-        elasticsearch = 9200
+        logstash      = 5044
         kibana        = 80
       }
       root_block_device = 30
